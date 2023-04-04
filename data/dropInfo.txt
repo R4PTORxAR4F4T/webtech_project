@@ -1,0 +1,4 @@
+2019-09-02 english sec:a cradit-3 instractor:arif status:droped
+20220-03-01 math sec:d cradit-3 instractor:rakib status:cancle
+2021-06-09 oop2 sec:j cradit-3 instractor:sumon status:droped
+2022-12-11 DLC sec:f cradit-3 instractor:sajjat status:cancle
