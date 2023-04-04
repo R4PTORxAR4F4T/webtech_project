@@ -15,23 +15,23 @@
 ?>
     <form method="post" action="dropCheck.php">
         <label for="date">Date:</label>
-        <input type="date" id="date" name="date"><br><br>
+        <input type="date" id="date" name="date" required><br><br>
         
         <label for="subject">Subject :</label>
-        <input type="text" id="subject" name="subject"><br><br>
+        <input type="text" id="subject" name="subject" required><br><br>
         
         <label for="section">Section :</label>
-        <input type="text" id="section" name="section"><br><br>
+        <input type="text" id="section" name="section" required><br><br>
         
         <label for="option">CRADIT :</label>
-        <select id="option" name="option">
-            <option value="cradit-1">1</option>
-            <option value="cradit-2">2</option>
-            <option value="cradit-3">3</option>
+        <select id="option" name="option" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
         </select><br><br>
         
         <label for="instractor">Instractor:</label>
-        <input type="text" id="instractor" name="instractor"><br><br>
+        <input type="text" id="instractor" name="instractor" required><br><br>
         
         <input type="submit" value="Submit">
         </form>
