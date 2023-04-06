@@ -47,17 +47,47 @@
         echo "<br>";
 
 
-        $file = fopen('../data/dropInfo.txt', 'r');
+        // $file = fopen('../data/dropInfo.txt', 'r');
         // $data = fread($file, filesize('../data/dropInfo.txt'));    
         // echo $data;
         // fclose($file);
 
-        while(!feof($file)){
-            $data = fgets($file);
-            echo $data; 
-            echo"<br>";
+        // //========================================= read text file as DB
+        // $file = fopen('../data/dropInfo.txt', 'r');
+        // while(!feof($file)){
+        //     $data = fgets($file);
+        //     echo $data; 
+        //     echo"<br>";
+        // }
+        // fclose($file);
+        
+        $con = mysqli_connect('127.0.0.1', 'root', '', 'webtechproject');
+        
+        $sql = "select * from dropinfo";
+        $result = mysqli_query($con, $sql);
+        
+        echo"<table border=1>";
+        while($row = mysqli_fetch_assoc($result)){
+            // print_r($row);
+            $id = $row['id'];
+            $date = $row['date'];
+            $subject = $row['subject'];
+            $section = $row['section'];
+            $cradit = $row['cradit'];
+            $instractor = $row['instractor'];
+            $status = $row['status'];
+
+            echo "<tr>
+                    <td>id: $id</td>
+                    <td>date: $date</td>
+                    <td>subject: $subject</td>
+                    <td>section: $section</td>
+                    <td>cradit: $cradit</td>
+                    <td>instractor: $instractor</td>
+                    <td>status: $status</td>
+                </tr>";
         }
-        fclose($file);
+        echo"</table>";
         
         if($name == "admin"){
 ?>
@@ -75,35 +105,44 @@
             $requestNo = $_POST['requestNo']; 
             $statusUp = $_POST['statusUp'];  
 
-            $file = fopen('../data/dropInfo.txt', 'r'); 
-            $current_line = 0; // Initialize current line
+            $sql = "UPDATE dropinfo SET status = '$statusUp' WHERE id = $requestNo";
 
-            while (!feof($file)) {
-            $current_line++;
-            $line = fgets($file); // Get current line
-            if ($current_line == $requestNo){
-                
-                $parts = explode(' ', $line);
-                
-                $date = $parts[0];
-                $subject = $parts[1];
-                $section = $parts[2];
-                $cradit = $parts[3];
-                $instractor = $parts[4];
-                $status = $statusUp;
-
-                $data = file("../data/dropInfo.txt");
-                $data[$requestNo-1] = "$date $subject $section $cradit $instractor status:$status"."\r\n";
-                file_put_contents("../data/dropInfo.txt", implode("", $data));
-
-                header('location: dropCou.php');
-                // echo $parts[5]; // Output the line
-
-
-                break; 
+            if (mysqli_query($con, $sql)) {
+            // echo "Status of ID 1 updated successfully";
+            header('location: dropCou.php');
+            } else {
+            echo "Error updating status: " . mysqli_error($con);
             }
-            }
-            fclose($file); 
+
+            //===============================================text file as a db
+            // $file = fopen('../data/dropInfo.txt', 'r'); 
+            // $current_line = 0; // Initialize current line
+
+            // while (!feof($file)) {
+            // $current_line++;
+            // $line = fgets($file); // Get current line
+            // if ($current_line == $requestNo){
+                
+            //     $parts = explode(' ', $line);
+                
+            //     $date = $parts[0];
+            //     $subject = $parts[1];
+            //     $section = $parts[2];
+            //     $cradit = $parts[3];
+            //     $instractor = $parts[4];
+            //     $status = $statusUp;
+
+            //     $data = file("../data/dropInfo.txt");
+            //     $data[$requestNo-1] = "$date $subject $section $cradit $instractor status:$status"."\r\n";
+            //     file_put_contents("../data/dropInfo.txt", implode("", $data));
+
+            //     header('location: dropCou.php');
+            //     // echo $parts[5]; // Output the line
+                
+            //     break; 
+            // }
+            // }
+            // fclose($file); 
 
         }
 
