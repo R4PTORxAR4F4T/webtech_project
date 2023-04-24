@@ -4,6 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Login Portal</title>
+<link rel="stylesheet" href="../styles/userLogin.css">
+
 <?php                 
                 
 
@@ -24,23 +26,24 @@ if(!empty($_POST["remember"])) {
 </head>
 <body>
  
+<div>
 <h2>Login Portal</h2>
 
 <form action="logincheck.php" method="post">
 	<p>
-		Username: <input name="username" type="text" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" class="input-field">
+		Username: <input class="fild" name="username" type="text" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" class="input-field">
 	</p>
-		 <p>Password: <input name="password" type="password" value="<?php if(isset($_COOKIE["password"])) { echo $_COOKIE["password"]; } ?>" class="input-field">
+		 <p>Password: <input class="fild" name="password" type="password" value="<?php if(isset($_COOKIE["password"])) { echo $_COOKIE["password"]; } ?>" class="input-field">
 	</p>
-		<p><input type="checkbox" name="remember" /> Remember me
+		<p><input class="check" type="checkbox" name="remember" /> Remember me
 	</p>
-		<input type="submit" name="login" value="submit"><br>
-		<a href="creatAcc.php"> creat accoutn ? </a><br>
-		<a href="forgot.php"> forgot password !! </a>
+		<input class="sub-btn" type="submit" name="login" value="Login"><br>
+		<a class="creat" href="creatAcc.php"> creat account ? </a><br>
+		<a class="forgot" href="forgot.php"> forgot password !! </a>
 </form>
 
     <br><br>
-	<a href=""> Back </a>
+	<a class="back" href=""> Back </a>
   
 </div>
 

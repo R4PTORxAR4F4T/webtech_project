@@ -8,11 +8,11 @@
         // $password = $_REQUEST['password'];
 
         if($_POST['username'] == "" && $_POST['password'] == ""){
-            echo "null data found...";
+            // echo "null data found...";
+            echo '<script>alert("This is an alert message!");</script>';
+            
 ?>
 
-<br>
-<a href="userLogin.php">Try again</a>
 
 <?php    
         }
